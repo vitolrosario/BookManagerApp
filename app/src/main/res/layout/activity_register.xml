@@ -61,6 +61,18 @@
             android:hint="Password"
             android:inputType="textPassword" />
 
+        <RelativeLayout
+            android:id="@+id/reg_loadingPanel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center" >
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true" />
+        </RelativeLayout>
+
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_create_account"
             android:layout_width="150dp"
@@ -76,4 +88,5 @@
 
 
     </LinearLayout>
+
 </ScrollView>

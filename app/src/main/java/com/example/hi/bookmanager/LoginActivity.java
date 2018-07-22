@@ -11,6 +11,8 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.hi.bookmanager.AsyncTasks.AsyncLogin;
+import com.example.hi.bookmanager.AsyncTasks.AsyncRegister;
 import com.example.hi.bookmanager.DataAccess.User;
 import com.example.hi.bookmanager.DataAccess.UserDao;
 import com.example.hi.bookmanager.DataBase.BookManagerDB;
@@ -30,11 +32,11 @@ public class LoginActivity extends AppCompatActivity {
         inputUsername = findViewById(R.id.input_username);
         inputPassword = findViewById(R.id.input_password);
 
+        SetLoading(false);
+
         ListenLogin();
 
         ListenRegister();
-
-
     }
 
     private void ListenLogin()
@@ -49,18 +51,15 @@ public class LoginActivity extends AppCompatActivity {
                 if(inputUsername!=null){
                     username = inputUsername.getText().toString().toLowerCase();
                 }
-                if(inputUsername!=null){
+                if(inputPassword!=null){
                     password = inputPassword.getText().toString().toLowerCase();
                 }
 
                 if(username.isEmpty() || password.isEmpty()){
-                    showErrorDialog();
-                    inputUsername.setText("");
-                    inputPassword.setText("");
+                    GeneralClass.showErrorDialog("Error", "Missing Information!", view.getContext());
                 }
                 else{
-                    if (ValidateLogin(username, password))
-                        goMainActivity();
+                    LoginUser(username, password);
                 }
             }
         });
@@ -80,38 +79,14 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private boolean ValidateLogin(final String username, final String password)
+    private void LoginUser(final String username, final String password)
     {
-
-        User user = new User();
-
-        final BookManagerDB db = BookManagerDB.getDatabase(this);
-
-        // Define the task
-        db.runInTransaction(new Runnable() {
-            @Override
-            public void run() {
-                User user =  db.userDao().ValidateLogin(username, password);
-
-                if (user != null) {
-                    isValidated = true;
-                    SharedPreferences mSettings = getSharedPreferences("Settings", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = mSettings.edit();
-                    editor.putString(GeneralClass.Values.NameLogged, user.getFirstName() + " " + user.getLastName());
-                    editor.putBoolean(GeneralClass.Values.islogged, true);
-                    editor.apply();
-                }
-                else {
-                    isValidated = false;
-                }
-
-            }
-        });
-
-        return isValidated;
+        AsyncLogin asyncLogin=  new AsyncLogin();
+        asyncLogin.AsyncLogin(this, username, password);
+        asyncLogin.execute();
     }
 
-    private void goMainActivity()
+    public void goMainActivity()
     {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
@@ -123,13 +98,11 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void showErrorDialog(){
-        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-        dlgAlert.setMessage("Wrong Username/Passoword");
-        dlgAlert.setTitle("Error");
-        dlgAlert.setPositiveButton("OK", null);
-        dlgAlert.setCancelable(true);
-        dlgAlert.create().show();
+    public void SetLoading(boolean show)
+    {
+        if (show)
+            findViewById(R.id.log_loadingPanel).setVisibility(View.VISIBLE);
+        else
+            findViewById(R.id.log_loadingPanel).setVisibility(View.GONE);
     }
-
 }

@@ -42,34 +42,6 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:inputType="textPassword" />
-        <!--
-        &lt;!&ndash; Email Label &ndash;&gt;
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/colorBlack"
-                android:hint="Username" />
-        </android.support.design.widget.TextInputLayout>
-
-        &lt;!&ndash; Password Label &ndash;&gt;
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:textColor="@color/colorBlack"
-                android:hint="Password"/>
-        </android.support.design.widget.TextInputLayout>-->
 
         <!--Forgot Password Label-->
         <android.support.v7.widget.AppCompatButton
@@ -80,6 +52,18 @@
             android:textColor="@color/colorWhite"
             android:text="Forgot password?"
             android:textAlignment="textStart"/>
+
+        <RelativeLayout
+            android:id="@+id/log_loadingPanel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center" >
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true" />
+        </RelativeLayout>
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_login"

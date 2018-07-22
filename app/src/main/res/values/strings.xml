@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BookManager</string>
+    <string name="search_book">Search Book</string>
 </resources>
