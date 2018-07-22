@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:background="@drawable/background_night">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book Manager"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginBottom="30dp"/>
+
+        <ImageView android:src="@drawable/book_image"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:id="@+id/input_username"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:inputType="text"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:id="@+id/input_password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword" />
+        <!--
+        &lt;!&ndash; Email Label &ndash;&gt;
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/colorBlack"
+                android:hint="Username" />
+        </android.support.design.widget.TextInputLayout>
+
+        &lt;!&ndash; Password Label &ndash;&gt;
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/input_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/colorBlack"
+                android:hint="Password"/>
+        </android.support.design.widget.TextInputLayout>-->
+
+        <!--Forgot Password Label-->
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_forgot"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="@color/colorWhite"
+            android:text="Forgot password?"
+            android:textAlignment="textStart"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@color/colorWhite"
+            android:textColor="@color/colorBlack"
+            android:padding="12dp"
+            android:textAlignment="center"
+            android:text="Sign in"/>
+
+        <!--Register Label-->
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_register"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="@color/colorWhite"
+            android:text="Don't have an account? Register Now!"/>
+
+
+    </LinearLayout>
+</ScrollView>
