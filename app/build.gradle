@@ -37,4 +37,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "android.arch.persistence.room:runtime:$roomVersion"
     annotationProcessor "android.arch.persistence.room:compiler:$roomVersion"
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.apptakk.http_request:http-request:0.1.2'
+    implementation 'com.google.code.gson:gson:2.8.5'
 }

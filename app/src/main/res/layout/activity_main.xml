@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,68 +12,35 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="30dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:background="@drawable/background_night">
+        android:background="@drawable/background_night"
+        android:padding="20dp"
+        >
 
-
-        <RelativeLayout
+        <SearchView
+            android:id="@+id/search_book"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/search_edit_text_background"
-            android:layout_marginBottom="30dp"
+            android:background="@color/colorWhite"
+            android:searchIcon="@drawable/search_icon"
             >
 
-            <EditText
-                android:id="@+id/home_searchbar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_toLeftOf="@+id/iv_search_icon"
-                android:background="@android:color/transparent"
-                android:hint="@string/search_book"
-                android:imeOptions="actionSearch"
-                android:padding="10dp"
-                android:singleLine="true"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp" />
+        </SearchView>
 
-            <ImageView
-                android:id="@+id/iv_search_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/search_icon" />
-
-        </RelativeLayout>
-
-
-        <ScrollView
+        <View
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/lowerDivision"
+            android:background="@color/colorWhite"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="1dp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/colorWhite">
-
-            <!--<android.support.v7.widget.RecyclerView-->
-                <!--android:id="@+id/rvCountryList"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent" />-->
-            </LinearLayout>
-
-        </ScrollView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvBooks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <RelativeLayout
-            android:id="@+id/loadingPanel"
+            android:id="@+id/log_loadingPanel"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center" >
@@ -83,4 +52,5 @@
         </RelativeLayout>
 
     </LinearLayout>
+
 </ScrollView>
