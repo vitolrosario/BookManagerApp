@@ -20,10 +20,10 @@
 <img src="https://raw.githubusercontent.com/vitolrosario/BookManagerApp/master/app/src/main/res/drawable/sc_buy_now.jpeg" align="center" height="500px" width="282px"/>
 
 ## 
-Libraries:
-Room v1.1.1
-Cardview Support v7:27.1.1
-apptakk http-request v0.1.2
-Gson v2.8.5
-Recyclerview Support v7:27.1.1
-Picasso v2.71828
+Libraries:  
+Room v1.1.1  
+Cardview Support v7:27.1.1  
+apptakk http-request v0.1.2  
+Gson v2.8.5  
+Recyclerview Support v7:27.1.1  
+Picasso v2.71828  
