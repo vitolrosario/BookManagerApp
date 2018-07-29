@@ -1,12 +1,14 @@
 package com.example.hi.bookmanager.Books;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 public class VolumeInfo implements Serializable {
-
     private String title;
     private List<String> authors = null;
     private String publisher;
@@ -31,6 +33,15 @@ public class VolumeInfo implements Serializable {
 //    private SeriesInfo seriesInfo;
     private String subtitle;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private String Username;
+
+    public String getUsername() {
+        return Username;
+    }
+
+    public void setUsername(String username) {
+        Username = username;
+    }
 
     public String getTitle() {
         return title;

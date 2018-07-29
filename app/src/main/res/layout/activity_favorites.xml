@@ -14,46 +14,34 @@
         android:padding="20dp"
         >
 
+
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@color/colorWhite"
-            android:weightSum="8"
+            android:weightSum="6"
             >
 
-            <ImageButton
+            <ImageView
                 android:layout_width="250dp"
                 android:layout_height="50dp"
-                android:src="@drawable/search_icon"
-                android:layout_weight="3"
+                android:src="@drawable/favorite_icon"
+                android:layout_weight="4"
                 android:layout_gravity="center"
                 android:background="@color/colorWhite"
-                android:id="@+id/btn_search"/>
+                />
 
-            <!-- Search Label -->
-            <android.support.design.widget.TextInputLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/colorBlack"
-                android:layout_weight="2">
-                <EditText android:id="@+id/book_query"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textColor="@color/colorBlack"
-                    android:imeOptions="actionSend"
-                    android:hint="Search for a book..."/>
-            </android.support.design.widget.TextInputLayout>
-
-            <ImageButton
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:src="@drawable/settings_icon"
-                android:layout_gravity="center"
-                android:layout_weight="3"
-                android:background="@color/colorWhite"
-                android:id="@+id/btn_settings"/>
+                android:text="Favorites Books"
+                android:textColor="@color/colorBlack"
+                android:textSize="30dp"
+                android:layout_weight="2"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_vertical"
+                />
         </LinearLayout>
 
 
@@ -112,12 +100,12 @@
             android:layout_height="1dp"/>
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvBooks"
+            android:id="@+id/rvFavorites"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <RelativeLayout
-            android:id="@+id/main_loadingPanel"
+            android:id="@+id/fav_loadingPanel"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center" >

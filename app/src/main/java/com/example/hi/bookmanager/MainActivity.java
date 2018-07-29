@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Parcelable;
 import android.support.v4.app.NotificationCompat;
@@ -12,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -35,6 +37,9 @@ import com.example.hi.bookmanager.Books.Book;
 import com.example.hi.bookmanager.Books.BookAdapter;
 import com.example.hi.bookmanager.Books.Item;
 import com.example.hi.bookmanager.Books.RecyclerViewClickListener;
+import com.example.hi.bookmanager.Books.VolumeInfo;
+import com.example.hi.bookmanager.DataAccess.User;
+import com.example.hi.bookmanager.DataBase.BookManagerDB;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -56,40 +61,97 @@ public class MainActivity extends AppCompatActivity  implements RecyclerViewClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        mDrawerList = (ListView) findViewById(R.id.listSideMenu);
-
-
-
         SetLoading(false);
 
-        //addDrawerItems();
+        ListenSettings();
 
         ListenSearch();
 
     }
 
-    private void addDrawerItems() {
-        String[] osArray = { "Favorites", "Logout"};
-        mAdapter = new ArrayAdapter<String>(this, android.R.layout.activity_list_item, osArray);
-        mDrawerList.setAdapter(mAdapter);
+    private void ListenSettings()
+    {
+        ImageButton btnSettings = (ImageButton) findViewById(R.id.btn_settings);
 
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "Time for an upgrade!", Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                showSettingsFilterPopup(v);
             }
         });
     }
 
-    /*@Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // TODO Auto-generated method stub
-        int id = item.getItemId();
-        if (id == android.R.id.home) {
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
+    private void ListenItemSettings()
+    {
+        ImageButton btnItemSettings = (ImageButton) findViewById(R.id.btn_item_settings);
+
+        btnItemSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showItemSettingsFilterPopup(v);
+            }
+        });
+    }
+
+    private void showSettingsFilterPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        // Inflate the menu from xml
+        popup.inflate(R.menu.settings_menu);
+        // Setup menu item selection
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.menu_favorites:
+                        goFavoritesActivity();
+                        return true;
+                    case R.id.menu_logout:
+                        SharedPreferences mSettings = getBaseContext().getSharedPreferences("Settings", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = mSettings.edit();
+                        editor.putString(GeneralClass.Values.NameLogged, null);
+                        editor.putBoolean(GeneralClass.Values.islogged, false);
+                        editor.apply();
+
+                        goLoginActivity();
+
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+        // Handle dismissal with: popup.setOnDismissListener(...);
+        // Show the menu
+        popup.show();
+    }
+
+    private void showItemSettingsFilterPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        // Inflate the menu from xml
+        popup.inflate(R.menu.item_settings_menu);
+        // Setup menu item selection
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.menu_add_favorite:
+
+                        return true;
+
+                    default:
+                        return false;
+                }
+            }
+        });
+        // Handle dismissal with: popup.setOnDismissListener(...);
+        // Show the menu
+        popup.show();
+    }
+
+    private void AddFavorite(Item book)
+    {
+        final BookManagerDB db = BookManagerDB.getDatabase(this);
+
+        //db.bookDao().insertBook(book.getVolumeInfo());
+    }
 
     @Override
     public void recyclerViewListClicked(View v, Item book) {
@@ -175,6 +237,7 @@ public class MainActivity extends AppCompatActivity  implements RecyclerViewClic
 
                             SetLoading(false);
 
+                            ListenItemSettings();
 
                         }
                         catch (Exception e)
@@ -215,9 +278,21 @@ public class MainActivity extends AppCompatActivity  implements RecyclerViewClic
     public void SetLoading(boolean show)
     {
         if (show)
-            findViewById(R.id.log_loadingPanel).setVisibility(View.VISIBLE);
+            findViewById(R.id.main_loadingPanel).setVisibility(View.VISIBLE);
         else
-            findViewById(R.id.log_loadingPanel).setVisibility(View.GONE);
+            findViewById(R.id.main_loadingPanel).setVisibility(View.GONE);
+    }
+
+    public void goLoginActivity()
+    {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void goFavoritesActivity()
+    {
+        Intent intent = new Intent(this, FavoritesActivity.class);
+        startActivity(intent);
     }
 
 }
