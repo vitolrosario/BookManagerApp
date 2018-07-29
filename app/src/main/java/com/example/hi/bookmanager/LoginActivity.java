@@ -8,8 +8,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.hi.bookmanager.AsyncTasks.AsyncLogin;
 import com.example.hi.bookmanager.AsyncTasks.AsyncRegister;
@@ -32,6 +35,13 @@ public class LoginActivity extends AppCompatActivity {
         inputUsername = findViewById(R.id.input_username);
         inputPassword = findViewById(R.id.input_password);
 
+        SharedPreferences mSettings = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        if (mSettings.getBoolean(GeneralClass.Values.islogged, false))
+        {
+            goMainActivity();
+        }
+
+
         SetLoading(false);
 
         ListenLogin();
@@ -41,29 +51,46 @@ public class LoginActivity extends AppCompatActivity {
 
     private void ListenLogin()
     {
+        inputPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_SEND) {
+                    ValidateLogin(v.getRootView());
+                    handled = true;
+                }
+                return handled;
+            }
+        });
+
         buttonLogin = findViewById(R.id.btn_login);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = "";
-                String password = "";
-                if(inputUsername!=null){
-                    username = inputUsername.getText().toString().toLowerCase();
-                }
-                if(inputPassword!=null){
-                    password = inputPassword.getText().toString().toLowerCase();
-                }
-
-                if(username.isEmpty() || password.isEmpty()){
-                    GeneralClass.showErrorDialog("Error", "Missing Information!", view.getContext());
-                }
-                else{
-                    LoginUser(username, password);
-                }
+                ValidateLogin(view);
             }
         });
 
+    }
+
+    private void ValidateLogin(View view)
+    {
+        String username = "";
+        String password = "";
+        if(inputUsername!=null){
+            username = inputUsername.getText().toString().toLowerCase();
+        }
+        if(inputPassword!=null){
+            password = inputPassword.getText().toString().toLowerCase();
+        }
+
+        if(username.isEmpty() || password.isEmpty()){
+            GeneralClass.showErrorDialog("Error", "Missing Information!", view.getContext());
+        }
+        else{
+            LoginUser(username, password);
+        }
     }
 
     private void ListenRegister()
@@ -81,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void LoginUser(final String username, final String password)
     {
-        AsyncLogin asyncLogin=  new AsyncLogin();
+        AsyncLogin asyncLogin = new AsyncLogin();
         asyncLogin.AsyncLogin(this, username, password);
         asyncLogin.execute();
     }

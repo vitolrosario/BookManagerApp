@@ -1,9 +1,10 @@
 package com.example.hi.bookmanager.Books;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AccessInfo {
+public class AccessInfo  implements Serializable {
 
     private String country;
     private String viewability;

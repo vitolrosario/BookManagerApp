@@ -1,9 +1,10 @@
 package com.example.hi.bookmanager.Books;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ImageLinks {
+public class ImageLinks  implements Serializable {
 
     private String smallThumbnail;
     private String thumbnail;

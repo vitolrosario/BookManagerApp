@@ -1,9 +1,10 @@
 package com.example.hi.bookmanager.Books;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SearchInfo {
+public class SearchInfo implements Serializable {
 
     private String textSnippet;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();

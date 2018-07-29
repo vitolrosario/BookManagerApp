@@ -1,9 +1,10 @@
 package com.example.hi.bookmanager.Books;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RetailPrice {
+public class RetailPrice implements Serializable {
 
     private Double amount;
     private String currencyCode;

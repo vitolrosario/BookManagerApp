@@ -6,7 +6,15 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
     <color name="colorGrey">#999999</color>
-
+    <color name="colorRed">#ff0000</color>
+    <color name="colorMainBackground">#cccccc</color>
+    <color name="colorBlue">#0000ff</color>
+    <color name="colorSoftBlue">#3c8dbc</color>
+    <color name="colorSoftRed">#dd4c39</color>
+    <color name="colorSaleTrue">#99ffcc</color>
+    <color name="colorSaleTrueText">#00ff80</color>
+    <color name="colorSaleFalse">#ff6666</color>
+    <color name="colorSaleFalseText">#ff1a1a</color>
 
 
 </resources>

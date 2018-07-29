@@ -3,11 +3,12 @@ package com.example.hi.bookmanager.Books;
 
 import android.content.ClipData;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Book {
+public class Book implements Serializable {
 
     private String kind;
     private Integer totalItems;

@@ -1,9 +1,10 @@
 package com.example.hi.bookmanager.Books;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Item {
+public class Item implements Serializable {
 
     private String kind;
     private String id;

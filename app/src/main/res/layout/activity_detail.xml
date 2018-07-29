@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorMainBackground"
+    android:padding="20dp"
+    tools:context=".DetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book 1"
+            android:textSize="25sp"
+            android:textColor="@color/colorBlack"
+            android:id="@+id/det_book_name"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="By Sherskpere"
+            android:textSize="15sp"
+            android:textColor="@color/colorBlue"
+            android:id="@+id/det_book_author"
+            android:layout_marginBottom="10dp"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/det_book_image"
+            android:src="@drawable/search_icon"
+            />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="0.5"
+            android:contextClickable="false"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/det_book_rating_count"
+            android:textColor="@color/colorBlack"
+            android:textAlignment="center"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/det_book_published_date"
+            android:text="Published on 20/05/2018"
+            android:textColor="@color/colorBlack"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="25dp"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/det_book_description"
+            android:text="bla bla bla bla bla bla bla"
+            android:textSize="15dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textColor="@color/colorBlack"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/det_book_sale_container"
+            android:layout_marginBottom="10dp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/det_book_sale_available"
+                android:text="This book is not available in Dominican Republic"
+                android:textColor="@color/colorBlack"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/det_book_price_container"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:text="USD$7.00"
+                android:textSize="15sp"
+                android:id="@+id/det_book_listed_price"
+                android:textColor="@color/colorBlack"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="USD$5.00"
+                android:textSize="20sp"
+                android:id="@+id/det_book_retail_price"
+                android:textColor="@color/colorRed"
+                />
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/det_book_btn_buy"
+            android:background="@drawable/round_red_btn"
+            android:text="Buy Now"
+            android:layout_marginBottom="20dp"
+            />
+
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/det_book_btn_sample"
+            android:text="View Sample"
+            android:background="@drawable/round_blue_btn"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

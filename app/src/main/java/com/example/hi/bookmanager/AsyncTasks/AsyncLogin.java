@@ -56,7 +56,7 @@ public class AsyncLogin extends AsyncTask<Void, Void, Void>{
         {
             SharedPreferences mSettings = loginActivity.getSharedPreferences("Settings", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = mSettings.edit();
-            editor.putString(GeneralClass.Values.NameLogged, username + " " + password);
+            editor.putString(GeneralClass.Values.NameLogged, username);
             editor.putBoolean(GeneralClass.Values.islogged, true);
             editor.apply();
 
